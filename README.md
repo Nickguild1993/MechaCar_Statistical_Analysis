@@ -22,4 +22,38 @@ Does this linear model predict mpg of MechaCar prototypes effectively? Why or wh
 
 question: The design specifications for the MechaCar suspension coils dictate that the variance of the suspension coils must not exceed 100 pounds per square inch. Does the current manufacturing data meet this design specification for all manufacturing lots in total and each lot individually? Why or why not?
 
-- The current manufacturing data shows that unfortunately, the requirement that the variance of the suspension not exceed 100 pounds per square inch (PSI) is not being observed by the brain genuises in Lot 3.  As the summary shows, they currently have a variance of 170.28, which not only exceeds the perscribed maximum by more than 70 PSI, but it's also way out of line with the variance that we're observing in Lot 1 and 2.  Those two lots' variance levels for suspension PSI is but a fraction of Lot 3's levels.  Whatever they're doing in Lot 3 to have such unacceptable PSI variance, is an isolated issue to that specific Lot.
+- The current manufacturing data shows that unfortunately, the requirement that the variance of the suspension not exceed 100 pounds per square inch (PSI) is not being observed by the brain genuises in Lot 3.  As the summary shows, they currently have a variance of 170.28, which not only exceeds the perscribed maximum by more than 70 PSI, but it's also way out of line with the variance that we're observing in Lot 1 (variance of .97 PSI) and 2 (variance of 7.49 PSI).  Those two lots' variance levels for suspension PSI are but a fraction of Lot 3's levels.  Whatever they're doing in Lot 3 to have such unacceptable PSI variance, is an isolated issue to that specific Lot.
+
+## Deliverable 3
+
+## T-Tests on Suspension Coils
+
+Hº : There is no significant statistical difference between the observed sample mean PSI and the population mean PSI.
+
+H1 : There is a significant statistical difference between the observed sample mean PSI and the population mean PSI.
+
+When we ran the one sample t-test across all observations, we returned a p value of .060 which is larger than our alpha of 0.05, meaning we fail to reject the null hypothesis, meaning that there is no statistical difference between the observed sample mean PSI across all observations and the population mean PSI.
+
+Running the one-sample t-test while using the subset argument for "Lot1" we returned a p value of 1.00, which again means we fail to reject the null hypothesis as this p value > alpha level of 0.05.
+
+For the "Lot2" subset one-sample t-test, we returned a p value of 0.6072, which again dictates that we fail to reject the null hypothesis as the p value > alpha level of 0.05.
+
+For the "Lot3" subset one-sample t-test, we returned a p value of 0.0416, which is less than our alpha level of 0.05!  Therefore, we reject the null hypothesis and accept the alternate hypothesis which states that there is a significant statistical difference between the observed sample mean (Lot 3) PSI and the population mean PSI. 
+
+### Deliverable 4
+
+## Study Design: MechaCar vs ALL TAKERS
+
+In order to quantify how MechaCar performs against similar vehicles I would run a series of one-sample t-tests in which the population is an average (of various metrics) of similiar cars from across the industry.  The reason for choosing a one sample t-test is because it allows me to compare my specific car(s), on any metric I choose, to an average of every other type of car in that same class. With that information, I'll be able to readily see which metrics the MechaCar is statistically different from its competition, and leverage those facets into an integrated marketing campaign highlighting how "the MechaCar is quantifiably safer than every other sedan in its class" or "The MechaCar retains its value at a higher rate over time better than any other sedan in its class".  
+
+For metrics, I would look to test the following: MPG, Safety Rating, Initial Cost, Resale Value, and Emission Rating.  Using the one sample t-test, I would determine if the sample (MechaCar) mean for "x" metric has a significant statistical difference from the population (comparable cars) mean.
+
+Hypothesis Testing:
+
+I will be utilzing an alpha level = 0.05
+
+Null Hypothesis: There is no significant statistical difference at an alpha level of 0.05 between the MechaCar mean [MPG, Safety Rating, Initial Cost, Resale Value, Emission Rating] and the population mean [metric].
+
+Alternative Hypothesis: There is a significant statistical difference at an alpha level of 0.05 between the MechaCar mean [MPG, Safety Rating, Initial Cost, Resale Value, Emission Rating] and the population mean [metric].
+
+In order to run this statistical design, I would need a dataset containing the averages of the metrics I want to test on for both the MechaCar model(s) along with the same information for all cars that're in the same class as those.  All of the metrics I wish to run are numeric and readily available, so that shouldn't be much of an issue to acquire. 
