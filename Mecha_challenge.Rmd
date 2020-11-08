@@ -33,3 +33,53 @@ lm(mpg ~ vehicle_length +vehicle_weight + spoiler_angle + ground_clearance + AWD
 summary(lm(mpg ~ vehicle_length +vehicle_weight + spoiler_angle + ground_clearance + AWD, data = mecha_mpg))
 ```
 
+```{r}
+### DELIVERABLE 2 - Suspension Coil CSV
+suspension_coils <- read.csv("Suspension_coil.csv")
+```
+
+```{r}
+# create summary_table for PSI 
+?summarize()
+summary_table <- suspension_coils %>% summarize(mean=mean(PSI), median=median(PSI), sd=sd(PSI), variance=var(PSI))
+```
+
+```{r}
+# use group_by(Manufacturing_Lot) and then summarize PSI. %>% time **Deliverable 2 still**
+lot_summary <- suspension_coils %>% group_by(Manufacturing_Lot) %>% summarize(mean=mean(PSI), median=median(PSI), sd=sd(PSI), variance=var(PSI), .groups="keep")
+```
+```{r}
+boxplot(suspension_coils$PSI)
+```
+
+```{r}
+# Deliverable 3- T-tests | going to use 1 sample b/c comparing sample to population
+#t.test(suspension_coils$PSI, alternative=c("two.sided"), mu=1500)
+t.test(suspension_coils$PSI, mu=1500)
+```
+
+```{r}
+# Deliverable 3 | T test | subset()
+# lot_1 <- t.test(subset(suspension_coils$PSI, mu=1500, subset(lot_summary, mean == 1500)))
+lot_1 <- t.test(subset(suspension_coils, Manufacturing_Lot=="Lot1")$PSI,mu=1500)
+```
+```{r}
+#lot_1 <- t.test(suspension_coils$PSI, mu=1500, subset(lot_summary, mean==1500))
+lot_1
+```
+
+```{r}
+# lot_2 for dev 3
+lot_2 <- t.test(subset(suspension_coils, Manufacturing_Lot =="Lot2")$PSI, mu=1500)
+```
+
+```{r}
+lot_2
+```
+
+```{r}
+# Lot_3 for dev 3 
+lot_3 <- t.test(subset(suspension_coils, Manufacturing_Lot =="Lot3")$PSI, mu=1500)
+lot_3
+```
+
