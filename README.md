@@ -41,7 +41,7 @@ H1 : There is a significant statistical difference between the observed sample m
 
 When we ran the one sample t-test across **all observations**, we returned a p value of .060 which is greater than our alpha of 0.05. Therefore, we fail to reject the null hypothesis, meaning that there is no statistical difference between the observed sample mean PSI across all observations and the population mean PSI.
 
-### Subset testing results 
+#### Subset testing results 
 
 Running the one-sample t-test while using the subset argument for "Lot1" we returned a p value of 1.00, which again means we fail to reject the null hypothesis as this p value > alpha level of 0.05.
 
